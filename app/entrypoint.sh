@@ -65,6 +65,8 @@ if [ "$1" = 'mattermost' ]; then
     echo "Using existing database connection"
   fi
 
+  /mattermost/bin/mattermost import bulk /mattermost/config/data.jsonl --validate && /mattermost/bin/mattermost import bulk /mattermost/config/data.jsonl --apply
+
   # Wait another second for the database to be properly started.
   # Necessary to avoid "panic: Failed to open sql connection pq: the database system is starting up"
   sleep 1
