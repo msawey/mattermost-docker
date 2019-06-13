@@ -66,6 +66,14 @@ if [ "$1" = 'mattermost' ]; then
   fi
 
   /mattermost/bin/mattermost config set ServiceSettings.EnableCustomEmoji true
+  /mattermost/bin/mattermost config set PasswordSettings.Lowercase true
+  /mattermost/bin/mattermost config set PasswordSettings.Uppercase true
+  /mattermost/bin/mattermost config set PasswordSettings.Symbol true
+  /mattermost/bin/mattermost config set PasswordSettings.Number true
+  /mattermost/bin/mattermost config set TeamSettings.SiteName "Anomali Chat"
+  /mattermost/bin/mattermost config set TeamSettings.CustomBrandText "A secure place for you to talk"
+  /mattermost/bin/mattermost config set TeamSettings.CustomDescriptionText "Chat about cyber security and stuff"
+  /mattermost/bin/mattermost config set TeamSettings.EnableCustomBrand true
   /mattermost/bin/mattermost import bulk /mattermost/config/data.jsonl --validate && /mattermost/bin/mattermost import bulk /mattermost/config/data.jsonl --apply
 
   # Wait another second for the database to be properly started.
