@@ -65,6 +65,7 @@ if [ "$1" = 'mattermost' ]; then
     echo "Using existing database connection"
   fi
 
+  /mattermost/bin/mattermost config set ServiceSettings.EnableCustomEmoji true
   /mattermost/bin/mattermost import bulk /mattermost/config/data.jsonl --validate && /mattermost/bin/mattermost import bulk /mattermost/config/data.jsonl --apply
 
   # Wait another second for the database to be properly started.

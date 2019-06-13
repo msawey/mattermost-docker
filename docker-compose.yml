@@ -4,6 +4,7 @@ services:
 
   db:
     build: db
+    container_name: db
     read_only: true
     restart: unless-stopped
     volumes:
@@ -27,6 +28,7 @@ services:
       #   - edition=team
       #   - PUID=1000
       #   - PGID=1000
+    container_name: app
     restart: unless-stopped
     volumes:
       - ./volumes/app/mattermost/config:/mattermost/config:rw
@@ -45,6 +47,7 @@ services:
 
   web:
     build: web
+    container_name: web
     ports:
       - "80:80"
       - "443:443"
